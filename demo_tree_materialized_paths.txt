@@ -1,0 +1,15 @@
+use ecommerce
+
+//Tree model  ::  Materialized path
+db.categories.insert( { _id: "Books", path: null } )
+db.categories.insert( { _id: "Programming", path: ",Books," } ) 
+db.categories.insert( { _id: "Databases", path: ",Books,Programming," } ) 
+db.categories.insert( { _id: "Languages", path: ",Books,Programming," } ) 
+db.categories.insert( { _id: "MongoDB", path: ",Books,Programming,Databases," } ) 
+db.categories.insert( { _id: "dbm", path: ",Books,Programming,Databases," } )
+
+
+//Remove all data from collection
+db.categories.remove({})
+
+//Query data

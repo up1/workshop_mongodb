@@ -1,0 +1,48 @@
+use ecommerce
+
+
+//Tree model  :: Parent reference
+
+
+db.categories.insert( { _id: "MongoDB", parent: "Databases" } )
+db.categories.insert( { _id: "dbm", parent: "Databases" } )
+db.categories.insert( { _id: "Databases", parent: "Programming" } )
+db.categories.insert( { _id: "Languages", parent: "Programming" } )
+db.categories.insert( { _id: "Programming", parent: "Books" } ) 
+db.categories.insert( { _id: "Books", parent: null } )
+
+
+db.categories.findOne({ _id: "MongoDB"})
+db.categories.findOne({ _id: "MongoDB"}).parent
+
+
+
+//Explain query
+db.categories.find()
+db.categories.find({parent: "Databases"}).explain("executionStats")
+
+db.categories.find().explain("executionStats")
+
+//Add index to parent field
+db.categories.ensureIndex( { parent: 1 } )
+
+//Remove index
+db.categories.dropIndex({parent:1})
+
+//Rebuild index
+db.categories.reIndex()
+
+//Query again
+db.categories.find({parent: "Databases"}).explain("executionStats")
+
+
+
+//Tree model :: Child reference
+
+
+
+
+
+
+
+

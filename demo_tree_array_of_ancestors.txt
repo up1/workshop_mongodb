@@ -1,0 +1,9 @@
+use ecommerce
+
+//Tree model  :: Array of ancestors
+db.categories.insert( { _id: "MongoDB", ancestors: [ "Books", "Programming", "Databases" ], parent: "Databases"})
+db.categories.insert( { _id: "dbm", ancestors: [ "Books", "Programming", "Databases" ], parent: "Databases"})
+db.categories.insert( { _id: "Databases", ancestors: [ "Books", "Programming" ], parent: "Programming"})
+db.categories.insert( { _id: "Languages", ancestors: [ "Books", "Programming" ], parent: "Programming"})
+db.categories.insert( { _id: "Programming", ancestors: [ "Books" ], parent: "Books" } ) 
+db.categories.insert( { _id: "Books", ancestors: [ ], parent: null } )

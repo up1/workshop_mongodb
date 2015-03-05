@@ -13,3 +13,10 @@ db.categories.insert( { _id: "dbm", path: ",Books,Programming,Databases," } )
 db.categories.remove({})
 
 //Query data
+db.categories.find().sort({path:1})
+
+#Partial category
+db.categories.find({path: /Programming/})
+
+#By root node
+db.categories.find({path: /^,Book/})

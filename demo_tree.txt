@@ -40,12 +40,4 @@ db.categories.remove({})
 
 
 
-//Tree model :: Child reference
-
-
-
-
-
-
-
 

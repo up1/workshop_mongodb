@@ -35,6 +35,9 @@ db.categories.reIndex()
 //Query again
 db.categories.find({parent: "Databases"}).explain("executionStats")
 
+//Remove all data from collection
+db.categories.remove({})
+
 
 
 //Tree model :: Child reference

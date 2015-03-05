@@ -1,0 +1,18 @@
+use ecommerce
+
+//Tree model  ::  Nested Sets
+
+db.categories.insert( { _id: "Books", parent: 0, left: 1, right: 12 } )
+db.categories.insert( { _id: "Programming", parent: "Books", left: 2, right: 11 } )
+db.categories.insert( { _id: "Languages", parent: "Programming", left: 3, right: 4 } )
+db.categories.insert( { _id: "Databases", parent: "Programming", left: 5, right: 10 } )
+db.categories.insert( { _id: "MongoDB", parent: "Databases", left: 6, right: 7 } )
+db.categories.insert( { _id: "dbm", parent: "Databases", left: 8, right: 9 } )
+
+//Remove all data from collection
+db.categories.remove({})
+
+
+//Query data
+var databasesCategory = db.categories.findOne({_id: "Databases"})
+db.categories.find( { left: { $gt: databasesCategory.left }, right: { $lt: databasesCategory.right } } )

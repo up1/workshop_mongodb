@@ -7,3 +7,7 @@ db.categories.insert( { _id: "Databases", ancestors: [ "Books", "Programming" ],
 db.categories.insert( { _id: "Languages", ancestors: [ "Books", "Programming" ], parent: "Programming"})
 db.categories.insert( { _id: "Programming", ancestors: [ "Books" ], parent: "Books" } ) 
 db.categories.insert( { _id: "Books", ancestors: [ ], parent: null } )
+
+
+//Remove all data from collection
+db.categories.remove({})

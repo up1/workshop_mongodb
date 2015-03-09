@@ -18,4 +18,22 @@ db.posts.find()
 db.posts.find().pretty()
 
 
+//Create comment with embedded
+comment =
+{    text: "Cool post!",
+     author: "somkiat",
+     date: new Date()
+}
+
+db.posts.update(
+	{
+	    _id: post._id	
+	},
+	{
+	    $push: { comments : comment }	
+	}
+)
+
+
+
 

@@ -34,6 +34,73 @@ db.posts.update(
 	}
 )
 
+//Query :: Post by author
+db.posts.find( {author:"somkiat"} )
+
+//Query :: Last 10 posts
+db.posts.find().sort( {date: -1} ).limit(10)
+
+//Quey :: Post from 15 Jan 2015
+jan_1_2015 = new Date(2015, 1, 15)
+
+db.posts.find(
+	{
+		date: { $gte:  jan_1_2015}
+	}
+)
+
+//Query :: Post with a tag
+db.posts.find( {tag:"mongodb"} )
+
+//Add index
+db.posts.find( {tag:"mongodb"} ).explain()
+db.posts.ensureIndex({ tag: 1 })  //Deprecate in 3.0
+db.posts.createIndex({ tag: 1 })
+
+//Drop index
+db.posts.dropIndex({ tag: 1 })
+
+//Count post
+db.posts.count()
+db.posts.find(tag:"mongodb"}).count()
+
+//Paging
+page = 0
+page_size = 10
+
+db.posts.find().limit(page_size).skip( page * page_size )
+
+
+//Query on embedded document
+db.posts.find( {"comments.author": "somkiat"} )
+
+db.posts.ensureIndex( {"comments.author": 1} )
+db.posts.createIndex( {"comments.author": 1} )
+
+
+//Migrate add category to posts
+post =
+{    _id: "1",  
+     topic: "Hello my blog",
+     text: "this is my first blog",
+     tag: [ "intro", "mongodb" ],
+     author: "somkiat",
+     date: new Date(),
+     category: ["book"]
+}
+
+
+post_id = db.posts.save(post)
+
+
+
+
+
+
+
+
+
+
 
 
 

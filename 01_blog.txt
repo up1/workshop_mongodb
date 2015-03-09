@@ -27,7 +27,7 @@ comment =
 
 db.posts.update(
 	{
-	    _id: post._id	
+	    _id: "1"
 	},
 	{
 	    $push: { comments : comment }	
@@ -91,6 +91,10 @@ post =
 
 
 post_id = db.posts.save(post)
+
+
+//Advance query
+db.posts.find({$where:"this.author == 'somkiat' || this.topic == 'foo'"})
 
 
 

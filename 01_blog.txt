@@ -1,0 +1,21 @@
+use blog
+
+
+//Create post
+post =
+{    _id: "1",  
+     topic: "Hello my blog",
+     text: "this is my first blog",
+     tag: [ "intro", "mongodb" ],
+     author: "somkiat",
+     date: new Date()
+}
+
+db.posts.insert(post)
+
+//Find data
+db.posts.find()
+db.posts.find().pretty()
+
+
+

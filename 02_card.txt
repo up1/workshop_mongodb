@@ -1,0 +1,47 @@
+use demo1
+
+//One-to-One :: Referencing
+contact = 
+{
+	_id: 1,
+	name:  "Somkiat Puisungnoen",
+	company_name: "Siam Chamnankit",
+	email: "somkiat@sprint3r.com",
+	address_id: 1
+}
+
+address = 
+{
+	_id: 1,
+	name:  "2/149 Phahonyothin 40",
+	city: "Bangkok"
+	country: "Thailand",
+	email: "somkiat@sprint3r.com",
+	zipcode: "10220"
+}
+
+
+db.contacts.insert( contact )
+
+
+//One-to-one :: Embedding
+full_contact = 
+{
+	_id: 1,
+	name:  "Somkiat Puisungnoen",
+	company_name: "Siam Chamnankit",
+	email: "somkiat@sprint3r.com",
+	address: {
+		name:  "2/149 Phahonyothin 40",
+		city: "Bangkok"
+		country: "Thailand",
+		email: "somkiat@sprint3r.com",
+		zipcode: "10220"
+	}
+}
+
+
+
+
+
+
